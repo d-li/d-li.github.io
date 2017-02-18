@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.18.1" />
+
+
+<title>Tips of blog down - A test website</title>
+<meta property="og:title" content="Tips of blog down - A test website">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="stylesheet" href="../../../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../../../css/main.css" media="all">
+
+
+
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../../../../" class="nav-logo">
+    <img src="../../../../images/logo.png"
+         width="50"
+         height="50"
+         alt="Your name">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../../../../about/">About</a></li>
+    
+    <li><a href="../../../../research/">Research</a></li>
+    
+    <li><a href="../../../../publications/">Publications</a></li>
+    
+    <li><a href="../../../../post/">Blog</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Tips of blog down</h1>
+
+    
+    <span class="article-date">February 18, 2017</span>
+    
+
+    <div class="article-content">
+
+
+
+<ul>
+<li>You can rearrange webpages within <code>config.toml</code> or <code>config.yaml</code>. For example:</li>
+</ul>
+<pre><code>menu:
+  main:
+    - name: &quot;About&quot;
+      url: &quot;/about/&quot;
+      weight: 0
+    - name: &quot;Blog&quot;
+      url: &quot;/post/&quot;
+      weight: 1
+    - name: &quot;GitHub&quot;
+      url: &quot;https://github.com/rstudio/blogdown&quot;
+      weight: 2
+    - name: &quot;Twitter&quot;
+      url: &quot;https://twitter.com/rstudio&quot;
+      weight: 3</code></pre>
+<ul>
+<li>To create a single page, create a file (markdown or rmarkdown) within <code>content</code> folder. For example, if I want to add a page to introduce my research, create a file named <code>research.Rmd</code> within <code>content</code> folder (<code>blogdown::new_content(path = &quot;research.Rmd&quot;)</code>). And then add it to the navigation. So the yaml seems like this now:</li>
+</ul>
+<pre><code>menu:
+  main:
+    - name: &quot;About&quot;
+      url: &quot;/about/&quot;
+      weight: 0
+    - name: &quot;Research&quot;
+      url: &quot;/research/&quot;
+      weight: 1
+    - name: &quot;Blog&quot;
+      url: &quot;/post/&quot;
+      weight: 2
+    - name: &quot;GitHub&quot;
+      url: &quot;https://github.com/rstudio/blogdown&quot;
+      weight: 3
+    - name: &quot;Twitter&quot;
+      url: &quot;https://twitter.com/rstudio&quot;
+      weight: 4</code></pre>
+<ul>
+<li><p>If you do not want to have the list of your post as the first view, create a file named as <code>_index.md</code> within the <code>content</code> folder. Put the information you want into that file. For example, you can just copy the <code>about.md</code> file and rename is as <code>_index.md</code>. Then it will be the first view of your website. People can still see your posts when they point the Blog head.</p></li>
+<li><p>To create a new post, just use <code>blogdown::new_post()</code> or use the <code>Addins</code> of the Rstudio IDE.</p></li>
+<li><p>You can create figure captions and cross-reference it back. See Figure <a href="#fig:pie">1</a> for example:</p></li>
+</ul>
+<pre class="r"><code>par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&#39;Sky&#39;, &#39;Sunny side of pyramid&#39;, &#39;Shady side of pyramid&#39;),
+  col = c(&#39;#0292D8&#39;, &#39;#F7EA39&#39;, &#39;#C4B632&#39;),
+  init.angle = -50, border = NA
+)</code></pre>
+<div class="figure"><span id="fig:pie"></span>
+<img src="figures/pie-1.png" alt="A fancy pie chart." width="672" />
+<p class="caption">
+Figure 1: A fancy pie chart.
+</p>
+</div>
+<ul>
+<li>The same as tables. See Table <a href="#tab:car">1</a> for example:</li>
+</ul>
+<pre class="r"><code>knitr::kable(cars[1:6, ], booktabs = T, caption = &quot;A table.&quot;)</code></pre>
+<table>
+<caption><span id="tab:car">Table 1: </span>A table.</caption>
+<thead>
+<tr class="header">
+<th align="right">speed</th>
+<th align="right">dist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Citations <span class="citation">(Li 2016)</span>, see also <span class="citation">Fenner (2012)</span> for details. So basically, you should write all your papers within Rmarkdown now! Drop the MS Word.</li>
+</ul>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-fenner2012a">
+<p>Fenner, Martin. 2012. “One-Click Science Marketing.” <em>Nature Materials</em> 11 (4): 261–63. doi:<a href="https://doi.org/10.1038/nmat3283">10.1038/nmat3283</a>.</p>
+</div>
+<div id="ref-li2016">
+<p>Li, Daijiang. 2016. “Awesome Title” 11 (4). Nature Publishing Group: 261–63. doi:<a href="https://doi.org/10.1038/nmat3283">10.1038/nmat3283</a>.</p>
+</div>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../../../../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../../../../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/yaml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

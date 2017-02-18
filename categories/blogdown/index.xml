@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogdown on A test website</title>
+    <link>/categories/blogdown/index.xml</link>
+    <description>Recent content in Blogdown on A test website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/categories/blogdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Tips of blog down</title>
+      <link>/2017/02/18/tips-of-blog-down/</link>
+      <pubDate>Sat, 18 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/02/18/tips-of-blog-down/</guid>
+      <description>&lt;!-- BLOGDOWN-HEAD --&gt;
+
+
+
+&lt;!-- /BLOGDOWN-HEAD --&gt;
+
+&lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can rearrange webpages within &lt;code&gt;config.toml&lt;/code&gt; or &lt;code&gt;config.yaml&lt;/code&gt;. For example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;menu:
+  main:
+    - name: &amp;quot;About&amp;quot;
+      url: &amp;quot;/about/&amp;quot;
+      weight: 0
+    - name: &amp;quot;Blog&amp;quot;
+      url: &amp;quot;/post/&amp;quot;
+      weight: 1
+    - name: &amp;quot;GitHub&amp;quot;
+      url: &amp;quot;https://github.com/rstudio/blogdown&amp;quot;
+      weight: 2
+    - name: &amp;quot;Twitter&amp;quot;
+      url: &amp;quot;https://twitter.com/rstudio&amp;quot;
+      weight: 3&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;To create a single page, create a file (markdown or rmarkdown) within &lt;code&gt;content&lt;/code&gt; folder. For example, if I want to add a page to introduce my research, create a file named &lt;code&gt;research.Rmd&lt;/code&gt; within &lt;code&gt;content&lt;/code&gt; folder (&lt;code&gt;blogdown::new_content(path = &amp;quot;research.Rmd&amp;quot;)&lt;/code&gt;). And then add it to the navigation. So the yaml seems like this now:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;menu:
+  main:
+    - name: &amp;quot;About&amp;quot;
+      url: &amp;quot;/about/&amp;quot;
+      weight: 0
+    - name: &amp;quot;Research&amp;quot;
+      url: &amp;quot;/research/&amp;quot;
+      weight: 1
+    - name: &amp;quot;Blog&amp;quot;
+      url: &amp;quot;/post/&amp;quot;
+      weight: 2
+    - name: &amp;quot;GitHub&amp;quot;
+      url: &amp;quot;https://github.com/rstudio/blogdown&amp;quot;
+      weight: 3
+    - name: &amp;quot;Twitter&amp;quot;
+      url: &amp;quot;https://twitter.com/rstudio&amp;quot;
+      weight: 4&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;If you do not want to have the list of your post as the first view, create a file named as &lt;code&gt;_index.md&lt;/code&gt; within the &lt;code&gt;content&lt;/code&gt; folder. Put the information you want into that file. For example, you can just copy the &lt;code&gt;about.md&lt;/code&gt; file and rename is as &lt;code&gt;_index.md&lt;/code&gt;. Then it will be the first view of your website. People can still see your posts when they point the Blog head.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;To create a new post, just use &lt;code&gt;blogdown::new_post()&lt;/code&gt; or use the &lt;code&gt;Addins&lt;/code&gt; of the Rstudio IDE.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You can create figure captions and cross-reference it back. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
+  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
+  init.angle = -50, border = NA
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;#####content/post/2017-02-18-tips-of-blog-down_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: A fancy pie chart.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;The same as tables. See Table &lt;a href=&#34;#tab:car&#34;&gt;1&lt;/a&gt; for example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(cars[1:6, ], booktabs = T, caption = &amp;quot;A table.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:car&#34;&gt;Table 1: &lt;/span&gt;A table.&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;right&#34;&gt;speed&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;dist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;Citations &lt;span class=&#34;citation&#34;&gt;(Li 2016)&lt;/span&gt;, see also &lt;span class=&#34;citation&#34;&gt;Fenner (2012)&lt;/span&gt; for details. So basically, you should write all your papers within Rmarkdown now! Drop the MS Word.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references&#34;&gt;
+&lt;div id=&#34;ref-fenner2012a&#34;&gt;
+&lt;p&gt;Fenner, Martin. 2012. “One-Click Science Marketing.” &lt;em&gt;Nature Materials&lt;/em&gt; 11 (4): 261–63. doi:&lt;a href=&#34;https://doi.org/10.1038/nmat3283&#34;&gt;10.1038/nmat3283&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ref-li2016&#34;&gt;
+&lt;p&gt;Li, Daijiang. 2016. “Awesome Title” 11 (4). Nature Publishing Group: 261–63. doi:&lt;a href=&#34;https://doi.org/10.1038/nmat3283&#34;&gt;10.1038/nmat3283&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
